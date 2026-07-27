@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,500;0,600;0,700;0,800;1,700&family=Inter:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: 'Inter', var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: 'Plus Jakarta Sans', var(--font-jakarta), var(--font-inter), ui-sans-serif, sans-serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-6: var(--chart-6);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --color-brand-green: var(--brand-green);
+  --color-brand-green-soft: var(--brand-green-soft);
+  --color-lime: var(--lime);
+  --color-terracotta: var(--terracotta);
+  --color-surface: var(--surface);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  color-scheme: light;
+  /* Off-white / white base */
+  --background: #ffffff;
+  --foreground: #1a2e20;
+  --card: #ffffff;
+  --card-foreground: #1a2e20;
+  --popover: #ffffff;
+  --popover-foreground: #1a2e20;
+  /* Rural green primary */
+  --primary: #2f6e3f;
+  --primary-foreground: #ffffff;
+  /* Soft green tint */
+  --secondary: #eef4ea;
+  --secondary-foreground: #2f6e3f;
+  --muted: #fafaf7;
+  --muted-foreground: #5b6b5f;
+  /* Lime accent for positive highlights */
+  --accent: #84cc16;
+  --accent-foreground: #1a2e20;
+  /* Terracotta for attention (not sharp red) */
+  --destructive: #c2703d;
+  --border: #e6e9e1;
+  --input: #e6e9e1;
+  --ring: #3d8b4c;
+  --chart-1: #2f6e3f;
+  --chart-2: #3d8b4c;
+  --chart-3: #84cc16;
+  --chart-4: #c2703d;
+  --chart-5: #a3b18a;
+  --chart-6: #cbd5c0;
+  --radius: 0.75rem;
+  /* Custom brand tokens */
+  --brand-green: #2f6e3f;
+  --brand-green-soft: #3d8b4c;
+  --lime: #84cc16;
+  --terracotta: #c2703d;
+  --surface: #fafaf7;
+  --sidebar: #fafaf7;
+  --sidebar-foreground: #1a2e20;
+  --sidebar-primary: #2f6e3f;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #eef4ea;
+  --sidebar-accent-foreground: #2f6e3f;
+  --sidebar-border: #e6e9e1;
+  --sidebar-ring: #3d8b4c;
+}
+
+.dark {
+  color-scheme: dark;
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Scroll-driven Entrance Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-scale-up {
+  animation: scaleUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Micro-interaction Helper Classes */
+.interactive-card {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.interactive-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 12px 24px -8px rgba(47, 110, 63, 0.12);
+}
+.interactive-card:active {
+  transform: translateY(-1px) scale(0.99);
+}
+
+.interactive-button {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.interactive-button:hover {
+  transform: translateY(-1.5px);
+  box-shadow: 0 4px 12px rgba(47, 110, 63, 0.2);
+}
+.interactive-button:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* Explicit Font Family Overrides */
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: 'Plus Jakarta Sans', var(--font-jakarta), var(--font-inter), sans-serif !important;
+}
+
+body, p, span, button, input, select, textarea, .font-sans {
+  font-family: 'Inter', var(--font-inter), sans-serif !important;
+}
+
+
