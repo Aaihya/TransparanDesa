@@ -204,33 +204,164 @@ export default function LandingPage() {
           </ScrollReveal>
         </section>
 
-        {/* Data Nasional Section with ScrollReveal */}
-        <section id="data-nasional" className="border-t border-border/40 bg-surface/50 py-16 sm:py-24">
+        {/* Data Nasional Section with Rich Statistical Insights & Detailed Cards */}
+        <section id="data-nasional" className="border-t border-border/40 bg-surface/60 py-16 sm:py-24">
           <div className="mx-auto max-w-6xl px-4 sm:px-6">
             <ScrollReveal variant="fade-up">
               <div className="text-center mb-12">
+                <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3.5 py-1 text-xs font-bold text-primary mb-3">
+                  <TrendingUp className="size-3.5" />
+                  ANALISIS AGREGAT & STATISTIK PUBLIK
+                </span>
                 <h2 className="font-heading text-2xl font-bold tracking-tight text-foreground sm:text-4xl">
-                  Gambaran Data Nasional Dana Desa
+                  Gambaran Data & Statistik Nasional Dana Desa
                 </h2>
-                <p className="mt-3 text-base text-muted-foreground max-w-xl mx-auto">
-                  Statistik agregat pengawasan & akuntabilitas alokasi Dana Desa di Indonesia.
+                <p className="mt-3 text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                  Pemetaan statistik alokasi anggaran, cakupan wilayah, dan urgensi partisipasi pengawasan publik secara nasional di 74.961 desa.
                 </p>
               </div>
             </ScrollReveal>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-              {stats.map((s, idx) => (
-                <ScrollReveal key={s.label} variant="zoom-in" delay={idx * 150}>
-                  <div className="group rounded-2xl border border-border bg-card p-7 shadow-xs text-center hover:border-primary/40 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                    <div className="mx-auto mb-4 flex size-14 items-center justify-center rounded-2xl bg-secondary text-primary group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
-                      <s.icon className="size-7" />
+            {/* 3 Detailed Stat Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+              <ScrollReveal variant="zoom-in" delay={0}>
+                <div className="group rounded-2xl border border-border bg-card p-6 sm:p-7 shadow-xs hover:border-primary/40 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex size-13 items-center justify-center rounded-2xl bg-secondary text-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110 transition-all duration-300 shadow-xs">
+                        <Wallet className="size-6" />
+                      </div>
+                      <span className="rounded-full bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300 text-[11px] font-extrabold px-2.5 py-0.5">
+                        Pagu APBN 2024
+                      </span>
                     </div>
-                    <p className="font-heading text-3xl sm:text-4xl font-extrabold text-foreground group-hover:text-primary transition-colors">{s.value}</p>
-                    <p className="text-xs sm:text-sm font-semibold text-muted-foreground mt-2">{s.label}</p>
+                    <p className="font-heading text-3xl sm:text-4xl font-extrabold text-foreground group-hover:text-primary transition-colors">
+                      Rp 71,9 Triliun
+                    </p>
+                    <p className="text-xs font-bold text-primary mt-1">Total Alokasi Anggaran Desa</p>
+                    <p className="text-xs text-muted-foreground mt-3 leading-relaxed">
+                      Dialokasikan langsung dari APBN untuk belanja pembangunan fisik, ketahanan pangan, dan pemberdayaan ekonomi di tingkat akar rumput.
+                    </p>
                   </div>
-                </ScrollReveal>
-              ))}
+                  <div className="mt-5 pt-4 border-t border-border/60 flex items-center justify-between text-[11px] font-semibold text-muted-foreground">
+                    <span>Rata-rata Per Desa</span>
+                    <span className="font-mono font-bold text-foreground">~Rp 960 Juta/Tahun</span>
+                  </div>
+                </div>
+              </ScrollReveal>
+
+              <ScrollReveal variant="zoom-in" delay={150}>
+                <div className="group rounded-2xl border border-border bg-card p-6 sm:p-7 shadow-xs hover:border-primary/40 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex size-13 items-center justify-center rounded-2xl bg-secondary text-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110 transition-all duration-300 shadow-xs">
+                        <MapPinned className="size-6" />
+                      </div>
+                      <span className="rounded-full bg-blue-100 text-blue-800 dark:bg-blue-950/60 dark:text-blue-300 text-[11px] font-extrabold px-2.5 py-0.5">
+                        Cakupan Nasional
+                      </span>
+                    </div>
+                    <p className="font-heading text-3xl sm:text-4xl font-extrabold text-foreground group-hover:text-primary transition-colors">
+                      74.961 Desa
+                    </p>
+                    <p className="text-xs font-bold text-primary mt-1">Tersebar di 434 Kabupaten/Kota</p>
+                    <p className="text-xs text-muted-foreground mt-3 leading-relaxed">
+                      Menjangkau jutaan keluarga dari Sabang sampai Merauke yang berhak mengakses dan mengawasi laporan keuangan desa secara terbuka.
+                    </p>
+                  </div>
+                  <div className="mt-5 pt-4 border-t border-border/60 flex items-center justify-between text-[11px] font-semibold text-muted-foreground">
+                    <span>Penetrasi Data</span>
+                    <span className="font-mono font-bold text-foreground">38 Provinsi Se-Indonesia</span>
+                  </div>
+                </div>
+              </ScrollReveal>
+
+              <ScrollReveal variant="zoom-in" delay={300}>
+                <div className="group rounded-2xl border border-rose-200/80 dark:border-rose-900/40 bg-card p-6 sm:p-7 shadow-xs hover:border-rose-400 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex size-13 items-center justify-center rounded-2xl bg-rose-100 text-rose-700 dark:bg-rose-950 dark:text-rose-300 group-hover:scale-110 transition-all duration-300 shadow-xs">
+                        <TrendingUp className="size-6" />
+                      </div>
+                      <span className="rounded-full bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300 text-[11px] font-extrabold px-2.5 py-0.5">
+                        Data KPK 2023
+                      </span>
+                    </div>
+                    <p className="font-heading text-3xl sm:text-4xl font-extrabold text-rose-600 dark:text-rose-400">
+                      601 Kasus
+                    </p>
+                    <p className="text-xs font-bold text-rose-700 dark:text-rose-300 mt-1">Kerugian Negara Rp 433 Miliar</p>
+                    <p className="text-xs text-muted-foreground mt-3 leading-relaxed">
+                      Korupsi terjadi akibat minimnya transparansi dan format dokumen APBDes PDF yang sulit dipahami oleh 73% warga awam (Survei ICW).
+                    </p>
+                  </div>
+                  <div className="mt-5 pt-4 border-t border-border/60 flex items-center justify-between text-[11px] font-semibold text-muted-foreground">
+                    <span>Faktor Akar Masalah</span>
+                    <span className="font-bold text-rose-600">Dokumen PDF Terisolasi</span>
+                  </div>
+                </div>
+              </ScrollReveal>
             </div>
+
+            {/* National Theme Allocation Breakdown Bar */}
+            <ScrollReveal variant="fade-up" delay={200}>
+              <div className="rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-xs">
+                <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6">
+                  <div>
+                    <h3 className="font-heading text-lg font-bold text-foreground">
+                      Estimasi Proporsi Statistik Alokasi Tematik APBDes Nasional
+                    </h3>
+                    <p className="text-xs text-muted-foreground mt-0.5">
+                      Distribusi rata-rata alokasi belanja desa berdasarkan pola Siskeudes Kemendes & Kemenkeu
+                    </p>
+                  </div>
+                  <span className="rounded-full bg-secondary px-3 py-1 text-xs font-bold text-primary shrink-0">
+                    Sistem Agregasi AI
+                  </span>
+                </div>
+
+                {/* Progress breakdown bar */}
+                <div className="space-y-4">
+                  <div className="h-4 w-full rounded-full bg-secondary overflow-hidden flex shadow-inner">
+                    <div className="bg-primary h-full transition-all duration-500" style={{ width: '38%' }} title="Pembangunan Fisik & Infrastruktur (38%)" />
+                    <div className="bg-brand-green h-full transition-all duration-500" style={{ width: '24%' }} title="Ketahanan Pangan & Agriculture (24%)" />
+                    <div className="bg-lime-500 h-full transition-all duration-500" style={{ width: '20%' }} title="Pemberdayaan & Insentif RT/RW (20%)" />
+                    <div className="bg-amber-500 h-full transition-all duration-500" style={{ width: '18%' }} title="BLT Desa & Bencana (18%)" />
+                  </div>
+
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+                    <div className="flex items-center gap-2">
+                      <span className="size-3 rounded-full bg-primary shrink-0" />
+                      <div>
+                        <p className="text-xs font-bold text-foreground">38% Infrastruktur</p>
+                        <p className="text-[10px] text-muted-foreground">Jalan, irigasi, & drainase</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="size-3 rounded-full bg-brand-green shrink-0" />
+                      <div>
+                        <p className="text-xs font-bold text-foreground">24% Pangan & Tani</p>
+                        <p className="text-[10px] text-muted-foreground">Lumbung & bibit unggul</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="size-3 rounded-full bg-lime-500 shrink-0" />
+                      <div>
+                        <p className="text-xs font-bold text-foreground">20% Operasional</p>
+                        <p className="text-[10px] text-muted-foreground">Insentif RT/RW & BPD</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="size-3 rounded-full bg-amber-500 shrink-0" />
+                      <div>
+                        <p className="text-xs font-bold text-foreground">18% BLT & Sos</p>
+                        <p className="text-[10px] text-muted-foreground">Bantuan langsung warga</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </ScrollReveal>
           </div>
         </section>
 
