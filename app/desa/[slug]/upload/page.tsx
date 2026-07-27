@@ -19,8 +19,8 @@ export default function UploadApbdesPage() {
         <nav aria-label="Breadcrumb" className="mb-6">
           <ol className="flex flex-wrap items-center gap-1.5 text-sm">
             <li>
-              <Link href="/" className="text-muted-foreground hover:text-primary transition-colors">
-                Beranda
+              <Link href="/dashboard" className="text-muted-foreground hover:text-primary transition-colors">
+                Dashboard
               </Link>
             </li>
             <li aria-hidden="true">

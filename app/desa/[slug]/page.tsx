@@ -85,8 +85,8 @@ export default function ProfilDesaPage() {
         <nav aria-label="Breadcrumb" className="mb-6">
           <ol className="flex items-center gap-1.5 text-sm">
             <li>
-              <Link href="/" className="text-muted-foreground transition-colors hover:text-primary">
-                Beranda
+              <Link href="/dashboard" className="text-muted-foreground transition-colors hover:text-primary">
+                Dashboard
               </Link>
             </li>
             <li aria-hidden="true">
