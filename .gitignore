@@ -18,3 +18,4 @@ Ideation*.md
 node_modules
 .next/
 .DS_Store
+.vercel

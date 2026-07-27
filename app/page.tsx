@@ -150,7 +150,7 @@ export default function LandingPage() {
 
             <div className="mt-4 flex items-center justify-center gap-1.5 text-xs font-semibold text-white drop-shadow-sm">
               <ShieldCheck className="size-3.5 text-white" />
-              Gratis digunakan warga — data anggaran adalah hak publik
+              Gratis digunakan warga data anggaran adalah hak publik
             </div>
           </div>
         </section>
@@ -163,7 +163,7 @@ export default function LandingPage() {
                 Fitur Unggulan TransparanDesa
               </h2>
               <p className="mt-3 text-base text-muted-foreground max-w-xl mx-auto">
-                Dari visualisasi AI hingga pelaporan warga — semua terintegrasi dalam satu platform terbuka.
+                Dari visualisasi AI hingga pelaporan warga semua terintegrasi dalam satu platform terbuka.
               </p>
             </div>
           </ScrollReveal>
