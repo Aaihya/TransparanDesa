@@ -42,21 +42,7 @@ export function AppHeader() {
           <Logo />
         </Link>
 
-        {/* Center Search / Nav */}
-        <div className="hidden md:flex items-center gap-3">
-          <Link
-            href="/dashboard"
-            className="text-xs font-semibold text-muted-foreground hover:text-primary transition-colors rounded-lg px-3 py-1.5 hover:bg-muted"
-          >
-            Dashboard
-          </Link>
-          <Link
-            href="/desa/ponggok"
-            className="text-xs font-semibold text-muted-foreground hover:text-primary transition-colors rounded-lg px-3 py-1.5 hover:bg-muted"
-          >
-            Desa Ponggok
-          </Link>
-        </div>
+
 
         {/* Right User Actions */}
         <div className="flex items-center gap-3">
