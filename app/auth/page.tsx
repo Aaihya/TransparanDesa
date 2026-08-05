@@ -29,32 +29,34 @@ export default function AuthPage() {
   }
 
   return (
-    <div className="min-h-dvh bg-surface flex items-center justify-center p-4 sm:p-6 relative">
-      {/* Back to home */}
-      <Link
-        href="/"
-        className="absolute top-4 left-4 sm:top-6 sm:left-6 inline-flex items-center gap-1.5 rounded-xl border border-border bg-card px-3.5 py-2 text-xs font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors shadow-xs z-30"
-      >
-        <ArrowLeft className="size-3.5" />
-        Beranda
-      </Link>
+    <div className="min-h-dvh bg-surface flex flex-col items-center justify-center p-4 sm:p-6 relative">
+      {/* Back to home button */}
+      <div className="w-full max-w-4xl flex items-center justify-start mb-4">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-card px-3.5 py-2 text-xs font-semibold text-muted-foreground hover:text-foreground hover:bg-muted transition-colors shadow-xs"
+        >
+          <ArrowLeft className="size-3.5" />
+          Beranda
+        </Link>
+      </div>
 
       {/* Main Outer Container */}
-      <div className="w-full max-w-md md:max-w-3xl md:h-[540px] rounded-3xl border border-border bg-card shadow-2xl overflow-hidden relative mt-12 md:mt-0">
+      <div className="w-full max-w-4xl rounded-3xl border border-border bg-card shadow-2xl overflow-hidden flex flex-col md:flex-row">
         
-        {/* ==================== MOBILE VIEW (< md) ==================== */}
-        <div className="block md:hidden p-6 sm:p-8 space-y-6">
-          <div className="flex items-center justify-center gap-2 mb-2">
-            <div className="flex size-9 items-center justify-center rounded-xl bg-primary text-primary-foreground">
-              <Leaf className="size-5" />
-            </div>
-            <span className="font-heading font-bold text-foreground text-lg">TransparanDesa</span>
-          </div>
-
+        {/* LEFT / MAIN COLUMN: FORM AREA */}
+        <div className="w-full md:w-1/2 p-6 sm:p-8 sm:py-10 flex flex-col justify-center bg-card">
           {!isRegister ? (
-            /* MOBILE LOGIN FORM */
-            <form onSubmit={handleLogin} className="space-y-4">
-              <div className="text-center">
+            /* LOGIN FORM */
+            <form onSubmit={handleLogin} className="space-y-4 max-w-sm mx-auto w-full">
+              <div className="flex items-center gap-2 mb-1">
+                <div className="flex size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+                  <Leaf className="size-4" />
+                </div>
+                <span className="font-heading font-bold text-foreground text-base">TransparanDesa</span>
+              </div>
+
+              <div>
                 <h1 className="font-heading text-2xl font-bold text-foreground">Masuk</h1>
                 <p className="mt-1 text-xs text-muted-foreground">
                   Masuk ke sistem transparansi TransparanDesa
@@ -62,17 +64,17 @@ export default function AuthPage() {
               </div>
 
               {/* Quick demo accounts */}
-              <div className="rounded-xl border border-border bg-muted/40 p-3">
-                <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground mb-2 text-center">
+              <div className="rounded-xl border border-border bg-muted/40 p-2.5">
+                <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground mb-1.5">
                   Pintasi 1-Klik Akun Demo:
                 </p>
-                <div className="flex flex-wrap justify-center gap-1.5">
+                <div className="flex flex-wrap gap-1.5">
                   {['warga@demo.id', 'bpd@demo.id', 'admin@demo.id'].map((acc) => (
                     <button
                       key={acc}
                       type="button"
                       onClick={() => { setEmail(acc); setPassword('demo1234') }}
-                      className="rounded-full border border-border bg-card hover:bg-secondary hover:text-primary px-3 py-1 text-xs font-medium text-foreground transition-colors"
+                      className="rounded-full border border-border bg-card hover:bg-secondary hover:text-primary px-2.5 py-1 text-xs font-medium text-foreground transition-colors"
                     >
                       {acc.split('@')[0]}
                     </button>
@@ -81,7 +83,7 @@ export default function AuthPage() {
               </div>
 
               {/* Email Input */}
-              <div className="space-y-1.5">
+              <div className="space-y-1">
                 <label className="text-xs font-semibold text-foreground">Email</label>
                 <div className="relative">
                   <Mail className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
@@ -97,7 +99,7 @@ export default function AuthPage() {
               </div>
 
               {/* Password Input */}
-              <div className="space-y-1.5">
+              <div className="space-y-1">
                 <div className="flex items-center justify-between">
                   <label className="text-xs font-semibold text-foreground">Password</label>
                   <button type="button" className="text-[11px] text-primary hover:underline">Lupa password?</button>
@@ -128,201 +130,17 @@ export default function AuthPage() {
               >
                 MASUK SEKARANG
               </button>
-
-              <div className="pt-3 border-t border-border text-center text-xs">
-                <span className="text-muted-foreground">Belum punya akun? </span>
-                <button
-                  type="button"
-                  onClick={() => setIsRegister(true)}
-                  className="font-bold text-primary hover:underline"
-                >
-                  Daftar Akun Baru
-                </button>
-              </div>
             </form>
           ) : (
-            /* MOBILE REGISTER FORM */
-            <form onSubmit={handleRegister} className="space-y-3.5">
-              <div className="text-center">
-                <h1 className="font-heading text-2xl font-bold text-foreground">Daftar Akun</h1>
-                <p className="mt-1 text-xs text-muted-foreground">
-                  Buat akun untuk ikut mengawasi dana desa
-                </p>
-              </div>
-
-              {/* Nama */}
-              <div className="space-y-1">
-                <label className="text-xs font-semibold text-foreground">Nama Lengkap</label>
-                <div className="relative">
-                  <User className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
-                  <input
-                    type="text"
-                    value={namaReg}
-                    onChange={(e) => setNamaReg(e.target.value)}
-                    placeholder="Nama Anda"
-                    required
-                    className="w-full h-10 rounded-xl border border-input bg-background pl-9 pr-3 text-xs placeholder:text-muted-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
-                  />
-                </div>
-              </div>
-
-              {/* Email */}
-              <div className="space-y-1">
-                <label className="text-xs font-semibold text-foreground">Email</label>
-                <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
-                  <input
-                    type="email"
-                    value={emailReg}
-                    onChange={(e) => setEmailReg(e.target.value)}
-                    placeholder="email@anda.com"
-                    required
-                    className="w-full h-10 rounded-xl border border-input bg-background pl-9 pr-3 text-xs placeholder:text-muted-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
-                  />
-                </div>
-              </div>
-
-              {/* No HP */}
-              <div className="space-y-1">
-                <label className="text-xs font-semibold text-foreground">No. WhatsApp <span className="text-muted-foreground font-normal">(opsional)</span></label>
-                <div className="relative">
-                  <Phone className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
-                  <input
-                    type="tel"
-                    value={kontakReg}
-                    onChange={(e) => setKontakReg(e.target.value)}
-                    placeholder="0812xxxxxxx"
-                    className="w-full h-10 rounded-xl border border-input bg-background pl-9 pr-3 text-xs placeholder:text-muted-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
-                  />
-                </div>
-              </div>
-
-              {/* Password */}
-              <div className="space-y-1">
-                <label className="text-xs font-semibold text-foreground">Password</label>
-                <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
-                  <input
-                    type={showPw ? 'text' : 'password'}
-                    value={pwReg}
-                    onChange={(e) => setPwReg(e.target.value)}
-                    placeholder="Min. 8 karakter"
-                    required
-                    minLength={8}
-                    className="w-full h-10 rounded-xl border border-input bg-background pl-9 pr-10 text-xs placeholder:text-muted-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
-                  />
-                  <button type="button" onClick={() => setShowPw(!showPw)} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">
-                    {showPw ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
-                  </button>
-                </div>
-              </div>
-
-              <button
-                type="submit"
-                className="w-full h-11 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 font-bold text-xs transition-all shadow-xs"
-              >
-                BUAT AKUN SEKARANG
-              </button>
-
-              <div className="pt-3 border-t border-border text-center text-xs">
-                <span className="text-muted-foreground">Sudah punya akun? </span>
-                <button
-                  type="button"
-                  onClick={() => setIsRegister(false)}
-                  className="font-bold text-primary hover:underline"
-                >
-                  Masuk Sekarang
-                </button>
-              </div>
-            </form>
-          )}
-        </div>
-
-        {/* --- DESKTOP VIEW (>= md) --- */}
-        <div className="hidden md:block h-full">
-          {/* LOGIN FORM CONTAINER (Fixed Left 50%) */}
-          <div className="absolute top-0 left-0 w-1/2 h-full p-8 flex flex-col justify-center">
-            <form onSubmit={handleLogin} className="space-y-4 max-w-sm mx-auto w-full">
-              <div>
-                <h1 className="font-heading text-2xl font-bold text-foreground">Masuk</h1>
-                <p className="mt-1 text-xs text-muted-foreground">
-                  Masuk ke sistem transparansi TransparanDesa
-                </p>
-              </div>
-
-              {/* Quick demo accounts */}
-              <div className="rounded-xl border border-border bg-muted/40 p-2.5">
-                <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground mb-1.5">
-                  Pintasi 1-Klik:
-                </p>
-                <div className="flex flex-wrap gap-1.5">
-                  {['warga@demo.id', 'bpd@demo.id', 'admin@demo.id'].map((acc) => (
-                    <button
-                      key={acc}
-                      type="button"
-                      onClick={() => { setEmail(acc); setPassword('demo1234') }}
-                      className="rounded-full border border-border bg-card hover:bg-secondary hover:text-primary px-2.5 py-0.5 text-xs font-medium text-foreground transition-colors"
-                    >
-                      {acc.split('@')[0]}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Email Input */}
-              <div className="space-y-1">
-                <label className="text-xs font-semibold text-foreground">Email</label>
-                <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="email@anda.com"
-                    required
-                    className="w-full h-9 rounded-lg border border-input bg-background pl-9 pr-3 text-xs text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 outline-none transition-colors"
-                  />
-                </div>
-              </div>
-
-              {/* Password Input */}
-              <div className="space-y-1">
-                <div className="flex items-center justify-between">
-                  <label className="text-xs font-semibold text-foreground">Password</label>
-                  <button type="button" className="text-[11px] text-primary hover:underline">Lupa password?</button>
-                </div>
-                <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
-                  <input
-                    type={showPw ? 'text' : 'password'}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="••••••••"
-                    required
-                    className="w-full h-9 rounded-lg border border-input bg-background pl-9 pr-10 text-xs text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 outline-none transition-colors"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowPw(!showPw)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
-                  >
-                    {showPw ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
-                  </button>
-                </div>
-              </div>
-
-              <button
-                type="submit"
-                className="w-full h-10 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 font-bold text-xs transition-all shadow-xs mt-2"
-              >
-                MASUK
-              </button>
-            </form>
-          </div>
-
-          {/* REGISTER FORM CONTAINER (Fixed Right 50%) */}
-          <div className="absolute top-0 right-0 w-1/2 h-full p-8 flex flex-col justify-center">
+            /* REGISTER FORM */
             <form onSubmit={handleRegister} className="space-y-3 max-w-sm mx-auto w-full">
+              <div className="flex items-center gap-2 mb-1">
+                <div className="flex size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+                  <Leaf className="size-4" />
+                </div>
+                <span className="font-heading font-bold text-foreground text-base">TransparanDesa</span>
+              </div>
+
               <div>
                 <h1 className="font-heading text-2xl font-bold text-foreground">Daftar Akun</h1>
                 <p className="mt-0.5 text-xs text-muted-foreground">
@@ -341,7 +159,7 @@ export default function AuthPage() {
                     onChange={(e) => setNamaReg(e.target.value)}
                     placeholder="Nama Anda"
                     required
-                    className="w-full h-9 rounded-lg border border-input bg-background pl-9 pr-3 text-xs placeholder:text-muted-foreground outline-none transition-colors"
+                    className="w-full h-9 rounded-xl border border-input bg-background pl-9 pr-3 text-xs text-foreground placeholder:text-muted-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
                   />
                 </div>
               </div>
@@ -357,7 +175,7 @@ export default function AuthPage() {
                     onChange={(e) => setEmailReg(e.target.value)}
                     placeholder="email@anda.com"
                     required
-                    className="w-full h-9 rounded-lg border border-input bg-background pl-9 pr-3 text-xs placeholder:text-muted-foreground outline-none transition-colors"
+                    className="w-full h-9 rounded-xl border border-input bg-background pl-9 pr-3 text-xs text-foreground placeholder:text-muted-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
                   />
                 </div>
               </div>
@@ -372,7 +190,7 @@ export default function AuthPage() {
                     value={kontakReg}
                     onChange={(e) => setKontakReg(e.target.value)}
                     placeholder="0812xxxxxxx"
-                    className="w-full h-9 rounded-lg border border-input bg-background pl-9 pr-3 text-xs placeholder:text-muted-foreground outline-none transition-colors"
+                    className="w-full h-9 rounded-xl border border-input bg-background pl-9 pr-3 text-xs text-foreground placeholder:text-muted-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
                   />
                 </div>
               </div>
@@ -389,7 +207,7 @@ export default function AuthPage() {
                     placeholder="Min. 8 karakter"
                     required
                     minLength={8}
-                    className="w-full h-9 rounded-lg border border-input bg-background pl-9 pr-10 text-xs placeholder:text-muted-foreground outline-none transition-colors"
+                    className="w-full h-9 rounded-xl border border-input bg-background pl-9 pr-10 text-xs text-foreground placeholder:text-muted-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
                   />
                   <button type="button" onClick={() => setShowPw(!showPw)} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">
                     {showPw ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
@@ -401,68 +219,61 @@ export default function AuthPage() {
                 type="submit"
                 className="w-full h-10 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 font-bold text-xs transition-all shadow-xs mt-1"
               >
-                BUAT AKUN
+                BUAT AKUN SEKARANG
               </button>
             </form>
+          )}
+        </div>
+
+        {/* RIGHT COLUMN: GREEN BANNER PANEL */}
+        <div className="w-full md:w-1/2 bg-gradient-to-br from-primary via-[#3d8b4c] to-[#2a5c35] text-primary-foreground p-8 sm:p-10 flex flex-col items-center justify-center text-center relative min-h-[260px] md:min-h-[500px]">
+          {/* Decorative background elements */}
+          <div className="absolute -top-12 -left-12 size-48 rounded-full bg-white/5 pointer-events-none" />
+          <div className="absolute -bottom-10 -right-8 size-40 rounded-full bg-white/5 pointer-events-none" />
+
+          <div className="relative flex size-14 items-center justify-center rounded-2xl bg-white/15 backdrop-blur-sm border border-white/20 mb-5">
+            <Leaf className="size-7 text-white" />
           </div>
 
-          {/* SLIDING OVERLAY PANEL (DESKTOP ONLY) */}
-          <div
-            className={`absolute top-0 left-0 w-1/2 h-full z-20 transition-transform duration-700 ease-in-out overflow-hidden
-              bg-gradient-to-br from-primary via-[#3d8b4c] to-[#2a5c35] text-primary-foreground p-8 flex flex-col items-center justify-center text-center
-              ${isRegister ? 'translate-x-0 rounded-r-3xl' : 'translate-x-full rounded-l-3xl'}
-            `}
-          >
-            {/* Decorative background elements */}
-            <div className="absolute -top-12 -left-12 size-48 rounded-full bg-white/5 pointer-events-none" />
-            <div className="absolute -bottom-10 -right-8 size-40 rounded-full bg-white/5 pointer-events-none" />
-
-            {/* Logo Mark */}
-            <div className="relative flex size-14 items-center justify-center rounded-2xl bg-white/15 backdrop-blur-sm border border-white/20 mb-6">
-              <Leaf className="size-7 text-white" />
+          {!isRegister ? (
+            <div className="space-y-4 max-w-xs">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-widest text-white/70 mb-1.5">TransparanDesa</p>
+                <h2 className="font-heading text-2xl font-bold leading-tight text-white">
+                  Halo, Selamat Datang!
+                </h2>
+                <p className="mt-2 text-xs text-white/80 leading-relaxed">
+                  Belum punya akun? Bergabunglah sekarang untuk mengakses data dan ikut serta dalam pengawasan desa.
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setIsRegister(true)}
+                className="w-full rounded-xl border-2 border-white/50 bg-white/10 hover:bg-white/25 px-6 py-2.5 text-xs font-bold text-white tracking-wider transition-all shadow-sm"
+              >
+                DAFTAR AKUN BARU
+              </button>
             </div>
-
-            {/* Overlay Content depending on mode */}
-            {isRegister ? (
-              <div className="space-y-5 max-w-xs animate-in fade-in zoom-in-95 duration-500">
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-widest text-white/60 mb-2">TransparanDesa</p>
-                  <h2 className="font-heading text-2xl font-bold leading-tight text-white">
-                    Sudah Punya Akun?
-                  </h2>
-                  <p className="mt-2.5 text-xs text-white/80 leading-relaxed">
-                    Masuk dengan akun Anda dan lanjutkan memantau transparansi anggaran desa secara terbuka.
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setIsRegister(false)}
-                  className="w-full rounded-xl border-2 border-white/50 bg-white/10 hover:bg-white/25 px-6 py-2.5 text-xs font-bold text-white tracking-wider transition-all shadow-sm"
-                >
-                  MASUK SEKARANG
-                </button>
+          ) : (
+            <div className="space-y-4 max-w-xs">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-widest text-white/70 mb-1.5">TransparanDesa</p>
+                <h2 className="font-heading text-2xl font-bold leading-tight text-white">
+                  Sudah Punya Akun?
+                </h2>
+                <p className="mt-2 text-xs text-white/80 leading-relaxed">
+                  Masuk dengan akun Anda dan lanjutkan memantau transparansi anggaran desa secara terbuka.
+                </p>
               </div>
-            ) : (
-              <div className="space-y-5 max-w-xs animate-in fade-in zoom-in-95 duration-500">
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-widest text-white/60 mb-2">TransparanDesa</p>
-                  <h2 className="font-heading text-2xl font-bold leading-tight text-white">
-                    Halo, Selamat Datang!
-                  </h2>
-                  <p className="mt-2.5 text-xs text-white/80 leading-relaxed">
-                    Belum punya akun? Bergabunglah sekarang untuk mengakses data dan ikut serta dalam pengawasan desa.
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  onClick={() => setIsRegister(true)}
-                  className="w-full rounded-xl border-2 border-white/50 bg-white/10 hover:bg-white/25 px-6 py-2.5 text-xs font-bold text-white tracking-wider transition-all shadow-sm"
-                >
-                  DAFTAR AKUN
-                </button>
-              </div>
-            )}
-          </div>
+              <button
+                type="button"
+                onClick={() => setIsRegister(false)}
+                className="w-full rounded-xl border-2 border-white/50 bg-white/10 hover:bg-white/25 px-6 py-2.5 text-xs font-bold text-white tracking-wider transition-all shadow-sm"
+              >
+                MASUK KE AKUN
+              </button>
+            </div>
+          )}
         </div>
 
       </div>
