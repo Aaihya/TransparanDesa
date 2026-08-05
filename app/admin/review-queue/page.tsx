@@ -51,6 +51,16 @@ export default function AdminReviewQueuePage() {
 
   const selectedTicket = queue[selectedTicketIndex]
 
+  const formatRupiahDisplay = (val: number | string) => {
+    const num = Number(val) || 0
+    return `Rp ${num.toLocaleString('id-ID')}`
+  }
+
+  const parseRupiahInput = (val: string) => {
+    const digits = val.replace(/[^0-9]/g, '')
+    return digits ? Number(digits) : 0
+  }
+
   const handleSelectTicket = (index: number) => {
     setSelectedTicketIndex(index)
     setEditedItems(queue[index]?.extracted_data?.items || [])
@@ -348,10 +358,10 @@ export default function AdminReviewQueuePage() {
                           </td>
                           <td className="p-2">
                             <input
-                              type="number"
-                              value={item.nominal_anggaran || 0}
-                              onChange={(e) => handleItemChange(idx, 'nominal_anggaran', Number(e.target.value))}
-                              className="w-32 h-8 rounded border border-input bg-background px-2 text-xs font-bold text-foreground tabular-nums"
+                              type="text"
+                              value={formatRupiahDisplay(item.nominal_anggaran)}
+                              onChange={(e) => handleItemChange(idx, 'nominal_anggaran', parseRupiahInput(e.target.value))}
+                              className="w-40 h-8 rounded border border-input bg-background px-2 text-xs font-bold text-foreground tabular-nums text-right font-mono"
                             />
                           </td>
                           <td className="p-2 text-center">
