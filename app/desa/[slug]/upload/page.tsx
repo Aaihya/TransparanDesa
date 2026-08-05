@@ -6,8 +6,8 @@ import { AppHeader } from '@/components/app-header'
 import { UploadApbdesForm } from '@/components/apbdes/upload-apbdes-form'
 
 const dataDesa = {
-  nama: 'Desa Ponggok',
-  slug: 'ponggok',
+  nama: 'Desa Sukamaju (Desa Contoh)',
+  slug: 'sukamaju',
 }
 
 export default function UploadApbdesPage() {
@@ -27,7 +27,7 @@ export default function UploadApbdesPage() {
               <ChevronRight className="size-4 text-muted-foreground/60" />
             </li>
             <li>
-              <Link href="/desa/ponggok" className="text-muted-foreground hover:text-primary transition-colors">
+              <Link href="/desa/sukamaju" className="text-muted-foreground hover:text-primary transition-colors">
                 {dataDesa.nama}
               </Link>
             </li>
@@ -66,7 +66,7 @@ export default function UploadApbdesPage() {
             <p className="font-semibold text-sm">Cara kerja AI Pipeline TransparanDesa</p>
             <p className="text-muted-foreground">
               PDF APBDes → <span className="font-medium text-foreground">pdfplumber</span> ekstraksi teks → 
-              <span className="font-medium text-foreground"> Claude Haiku</span> parsing terstruktur → 
+              <span className="font-medium text-foreground"> Gemini 3.6 Flash</span> parsing terstruktur → 
               data JSON → <span className="font-medium text-foreground">Visualisasi Interaktif</span>
             </p>
           </div>

@@ -39,34 +39,34 @@ const quickActions = [
     icon: PieChart,
     title: 'APBDes Visualizer',
     description: 'Lihat rincian alokasi & realisasi APBDes per kategori, lengkap dengan timeline pencairan dana.',
-    href: '/desa/ponggok/apbdes',
+    href: '/desa/sukamaju/apbdes',
     color: 'bg-primary/10 text-primary',
   },
   {
     icon: BarChart3,
     title: 'BenchmarkDesa',
     description: 'Bandingkan anggaran desa vs rata-rata desa serupa, termasuk deteksi anomali otomatis.',
-    href: '/desa/ponggok/benchmark',
+    href: '/desa/sukamaju/benchmark',
     color: 'bg-primary/10 text-primary',
   },
   {
     icon: Megaphone,
     title: 'Lapor Ketidaksesuaian',
     description: 'Kirimkan laporan bila ada ketidaksesuaian penggunaan dana desa di lingkungan Anda.',
-    href: '/desa/ponggok/lapor',
+    href: '/desa/sukamaju/lapor',
     color: 'bg-terracotta/10 text-terracotta',
   },
   {
     icon: Upload,
     title: 'Upload APBDes',
     description: 'Unggah dokumen PDF APBDes — AI akan mengekstrak data anggaran secara otomatis.',
-    href: '/desa/ponggok/upload',
+    href: '/desa/sukamaju/upload',
     color: 'bg-primary/10 text-primary',
   },
 ]
 
 const recentActivity = [
-  { icon: ShieldCheck, text: 'Laporan #TD-2026-00123 dari Desa Ponggok telah diverifikasi', time: '2 jam lalu', tone: 'green' },
+  { icon: ShieldCheck, text: 'Laporan #TD-2026-00123 dari Desa Sukamaju (Desa Contoh) telah diverifikasi', time: '2 jam lalu', tone: 'green' },
   { icon: FileText, text: 'APBDes Desa Sukamaju 2025 berhasil diekstrak oleh AI (6 kategori)', time: '5 jam lalu', tone: 'green' },
   { icon: Bell, text: 'Anomali alokasi terdeteksi: Infrastruktur Desa Ciakar +38% dari rata-rata', time: '1 hari lalu', tone: 'terracotta' },
 ]
@@ -93,11 +93,11 @@ export default function DashboardPage() {
             </p>
           </div>
           <Link
-            href="/desa/ponggok"
+            href="/desa/sukamaju"
             className="shrink-0 inline-flex items-center gap-2 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2.5 text-sm font-semibold transition-colors shadow-xs"
           >
             <MapPinned className="size-4" />
-            Profil Desa Ponggok
+            Profil Desa Sukamaju (Desa Contoh)
             <ChevronRight className="size-4" />
           </Link>
         </div>

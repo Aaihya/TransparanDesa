@@ -27,7 +27,7 @@ Namun, fakta di lapangan menunjukkan tantangan besar dalam transparansi dan akun
 ## ✨ Fitur Utama
 
 ### 1. 📊 APBDes Visualizer & AI Parsing
-- **Ekstraksi Otomatis Berbasis AI**: Mengubah PDF APBDes berlembar-lembar menjadi JSON terstruktur dalam hitungan detik menggunakan Claude Haiku LLM Engine.
+- **Ekstraksi Otomatis Berbasis AI**: Mengubah PDF APBDes berlembar-lembar menjadi JSON terstruktur dalam hitungan detik menggunakan Gemini 3.6 Flash LLM Engine.
 - **Visualisasi Interaktif**: Menampilkan pie chart alokasi (Bidang Pembangunan, Pemberdayaan, Pemerintahan, Bencana), progress bar realisasi anggaran, dan timeline pencairan dana.
 
 ### 2. 🔍 BenchmarkDesa & Deteksi Anomali
@@ -52,7 +52,7 @@ Namun, fakta di lapangan menunjukkan tantangan besar dalam transparansi dan akun
 | **Styling & Design** | **Tailwind CSS v4, Vanilla CSS** | UI kustom dengan skema warna hijau pedesaan & *glassmorphism*. |
 | **Typography** | **Plus Jakarta Sans & Inter** | Plus Jakarta Sans (Headlines/Hero) + Inter (Body/Dashboard). |
 | **Grafik & Visualisasi** | **Recharts & Lucide Icons** | Pie chart, bar chart, dan kustomisasi indikator status. |
-| **AI Engine** | **Claude Haiku API (`claude-haiku-4-5`)** | Parsing PDF APBDes menjadi format JSON terstandarisasi. |
+| **AI Engine** | **Google Gemini 3.6 Flash API** | Parsing PDF APBDes menjadi format JSON terstandarisasi. |
 | **PDF Extraction** | **Python (FastAPI) + pdfplumber** | Service pemrosesan dokumen PDF terpisah agar serverless function tidak timeout. |
 | **Database & Auth** | **Supabase (PostgreSQL + RLS)** | Database terstruktur dengan Row-Level Security. |
 | **Pengujian & Kualitas** | **TypeScript (Strict Mode)** | Menjamin tipe data dan stabilitas runtime aplikasi. |
@@ -68,7 +68,7 @@ Namun, fakta di lapangan menunjukkan tantangan besar dalam transparansi dan akun
          │       └─ Visualisasi APBDes, Grafik Realisasi, & Benchmark Desa
          │
          ├── 2. Upload PDF APBDes (Akun Terverifikasi)
-         │       └─ Python FastAPI + Claude Haiku AI -> JSON Database Supabase
+         │       └─ Python FastAPI + Gemini 3.6 Flash AI -> JSON Database Supabase
          │
          └── 3. Kirim LaporanWarga
                  └─ Warga Upload Foto Bukti -> Moderasi -> Tampil di Entri APBDes

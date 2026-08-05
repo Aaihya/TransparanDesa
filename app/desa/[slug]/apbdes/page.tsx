@@ -26,7 +26,7 @@ import { PencairanTimeline, TahapPencairan } from '@/components/apbdes/pencairan
 
 // Mock Data Desa
 const dataDesa = {
-  nama: 'Desa Ponggok',
+  nama: 'Desa Sukamaju (Desa Contoh)',
   kabupaten: 'Kabupaten Klaten',
   provinsi: 'Jawa Tengah',
 }
@@ -146,7 +146,7 @@ export default function ApbdesVisualizerPage() {
             </li>
             <li>
               <Link
-                href="/desa/ponggok"
+                href="/desa/sukamaju"
                 className="text-muted-foreground transition-colors hover:text-primary"
               >
                 {dataDesa.nama}

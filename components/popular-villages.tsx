@@ -3,7 +3,7 @@ import { MapPin } from 'lucide-react'
 
 const villages = [
   'Panggungharjo',
-  'Ponggok',
+  'Sukamaju (Desa Contoh)',
   'Nglanggeran',
   'Pujon Kidul',
   'Kutuh',

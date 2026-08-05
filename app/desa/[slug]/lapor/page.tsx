@@ -7,7 +7,7 @@ import { LaporanForm } from '@/components/lapor/laporan-form'
 
 // Mock Data Desa
 const dataDesa = {
-  nama: 'Desa Ponggok',
+  nama: 'Desa Sukamaju (Desa Contoh)',
   kabupaten: 'Kabupaten Klaten',
   provinsi: 'Jawa Tengah',
 }
@@ -31,7 +31,7 @@ export default function LaporanWargaPage() {
             </li>
             <li>
               <Link
-                href="/desa/ponggok"
+                href="/desa/sukamaju"
                 className="text-muted-foreground transition-colors hover:text-primary"
               >
                 {dataDesa.nama}

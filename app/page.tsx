@@ -48,7 +48,7 @@ const features = [
     icon: Upload,
     title: 'Upload & AI Parsing',
     description:
-      'Upload PDF APBDes resmi dari Siskeudes. Claude Haiku AI akan mengekstrak dan memetakan kategori anggaran secara otomatis dalam hitungan detik.',
+      'Upload PDF APBDes resmi dari Siskeudes. Gemini 3.6 Flash AI akan mengekstrak dan memetakan kategori anggaran secara otomatis dalam hitungan detik.',
     badge: 'LLM Powered',
   },
 ]

@@ -1,50 +1,96 @@
 import Link from 'next/link'
-import { ChevronRight, Wallet, PieChart, BarChart3, Megaphone, TrendingUp, Upload } from 'lucide-react'
+import { ChevronRight, Wallet, PieChart, BarChart3, Megaphone, Upload, Building2, GraduationCap, Stethoscope, ShieldCheck, FileText, ArrowRight } from 'lucide-react'
 import { AppHeader } from '@/components/app-header'
 import { DesaHeader } from '@/components/desa/desa-header'
-import { DesaSummaryCard } from '@/components/desa/desa-summary-card'
-import { FeatureNavCard } from '@/components/desa/feature-nav-card'
+import { RingkasanWarga, AlokasiRingkas } from '@/components/desa/ringkasan-warga'
+import { KlarifikasiDesa, KlarifikasiItem } from '@/components/desa/klarifikasi-desa'
 import { LaporanPublikList, type LaporanPublikItem } from '@/components/lapor/laporan-publik-list'
+import { Badge } from '@/components/ui/badge'
 
 const desa = {
-  nama: 'Desa Ponggok',
+  nama: 'Desa Sukamaju (Desa Contoh)',
   kabupaten: 'Kabupaten Klaten',
   provinsi: 'Jawa Tengah',
   penduduk: '5.200 jiwa',
   tahun: 2025,
-  totalAnggaran: 'Rp 2,4 M',
+  totalAnggaran: 'Rp 1,00 Miliar',
   realisasi: 78,
   status: { text: 'Anggaran Wajar', tone: 'ok' as const },
 }
 
-const features = [
+const dataAlokasiWarga: AlokasiRingkas[] = [
   {
-    icon: PieChart,
-    title: 'Lihat Rincian Anggaran',
-    description: 'Telusuri alokasi dan belanja APBDes per bidang dalam visualisasi yang mudah dipahami.',
-    target: 'Buka APBDes Visualizer',
-    href: '/desa/ponggok/apbdes',
+    kategori: 'Infrastruktur Jalan & Irigasi',
+    nominal: 350000000,
+    persen: 35,
+    color: '#2F6E3F',
+    iconType: 'building',
+    deskripsi: 'Pembangunan paving jalan Dusun 2, perbaikan drainase RT 03, dan rehabilitasi jembatan utama.',
   },
   {
-    icon: BarChart3,
-    title: 'Bandingkan dengan Desa Lain',
-    description: 'Lihat posisi desa ini dibanding desa sekitar berdasarkan anggaran dan realisasi.',
-    target: 'Buka BenchmarkDesa',
-    href: '/desa/ponggok/benchmark',
+    kategori: 'Pendidikan & Beasiswa',
+    nominal: 200000000,
+    persen: 20,
+    color: '#3D8B4C',
+    iconType: 'education',
+    deskripsi: 'Beasiswa pendidikan anak kurang mampu, insentif guru PAUD, dan perbaikan sarana perpustakaan desa.',
   },
   {
-    icon: Megaphone,
-    title: 'Lapor Ketidaksesuaian',
-    description: 'Sampaikan temuan atau dugaan penyimpanan penggunaan dana desa secara langsung.',
-    target: 'Buka LaporanWarga',
-    href: '/desa/ponggok/lapor',
+    kategori: 'Kesehatan & Posyandu',
+    nominal: 150000000,
+    persen: 15,
+    color: '#84CC16',
+    iconType: 'health',
+    deskripsi: 'Pengadaan alat perawat kesehatan posyandu, PMT balita stunting, dan insentif kader kesehatan.',
   },
   {
-    icon: Upload,
-    title: 'Upload Dokumen APBDes',
-    description: 'Unggah PDF APBDes resmi — AI akan mengekstrak dan memvisualisasikan data secara otomatis.',
-    target: 'Upload & Parsing AI',
-    href: '/desa/ponggok/upload',
+    kategori: 'Pemberdayaan UMKM & Tani',
+    nominal: 150000000,
+    persen: 15,
+    color: '#C2703D',
+    iconType: 'wallet',
+    deskripsi: 'Pelatihan pengolahan hasil tani, bantuan bibit unggul, dan modal usaha kelompok wanita tani.',
+  },
+  {
+    kategori: 'Operasional Pemerintah Desa',
+    nominal: 100000000,
+    persen: 10,
+    color: '#A3B18A',
+    iconType: 'wallet',
+    deskripsi: 'Insentif RT/RW, operasional kantor desa, dan administrasi kependudukan gratis.',
+  },
+  {
+    kategori: 'Lainnya / Cadangan Bencana',
+    nominal: 50000000,
+    persen: 5,
+    color: '#CBD5C0',
+    iconType: 'wallet',
+    deskripsi: 'Dana darurat tanggap bencana dan operasional kebersihan lingkungan.',
+  },
+]
+
+const dataKlarifikasi: KlarifikasiItem[] = [
+  {
+    id: 'klar-1',
+    kategori: 'Infrastruktur Jalan',
+    judul: 'Alokasi Pembangunan Paving Jalan Dusun 2',
+    penjelasan:
+      'Peningkatan anggaran jalan Dusun 2 dialokasikan khusus karena perbaikan darurat akibat pengikisan air hujan pasca banjir di awal tahun 2025. Seluruh pengerjaan telah disetujui dalam Musrenbangdes.',
+    pejabat: 'Bapak Hartono',
+    jabatan: 'Sekretaris Desa Sukamaju',
+    tanggal: '12 Juli 2025',
+    isOfficialVerified: true,
+  },
+  {
+    id: 'klar-2',
+    kategori: 'Kesehatan',
+    judul: 'Penerimaan Alat Kesehatan Posyandu Lansia',
+    penjelasan:
+      'Pengadaan alat Posyandu dilaksanakan pada pencairan Tahap 2 (Juli 2025) dan saat ini seluruh perlengkapan telah diserahterimakan kepada Ketua Kader Posyandu Dusun 1 & 2.',
+    pejabat: 'Ibu Ratna Yulia',
+    jabatan: 'Kasi Kesejahteraan Rakyat',
+    tanggal: '28 Juni 2025',
+    isOfficialVerified: true,
   },
 ]
 
@@ -80,27 +126,37 @@ export default function ProfilDesaPage() {
     <div className="min-h-dvh bg-surface">
       <AppHeader />
 
-      <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
-        {/* Breadcrumb */}
-        <nav aria-label="Breadcrumb" className="mb-6">
-          <ol className="flex items-center gap-1.5 text-sm">
-            <li>
-              <Link href="/dashboard" className="text-muted-foreground transition-colors hover:text-primary">
-                Dashboard
-              </Link>
-            </li>
-            <li aria-hidden="true">
-              <ChevronRight className="size-4 text-muted-foreground/60" />
-            </li>
-            <li>
-              <span className="font-medium text-foreground" aria-current="page">
-                {desa.nama}
-              </span>
-            </li>
-          </ol>
-        </nav>
+      <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10 space-y-10">
+        {/* Breadcrumb & Navigation */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <nav aria-label="Breadcrumb">
+            <ol className="flex items-center gap-1.5 text-sm">
+              <li>
+                <Link href="/dashboard" className="text-muted-foreground transition-colors hover:text-primary">
+                  Dashboard
+                </Link>
+              </li>
+              <li aria-hidden="true">
+                <ChevronRight className="size-4 text-muted-foreground/60" />
+              </li>
+              <li>
+                <span className="font-medium text-foreground" aria-current="page">
+                  {desa.nama}
+                </span>
+              </li>
+            </ol>
+          </nav>
 
-        {/* Header */}
+          {/* Quick Portal Switcher for Auditor / Inspector */}
+          <Link
+            href="/auditor"
+            className="inline-flex items-center gap-1.5 rounded-xl border border-border bg-card px-3.5 py-1.5 text-xs font-bold text-muted-foreground hover:text-primary hover:border-primary/40 transition-all shadow-xs"
+          >
+            <BarChart3 className="size-3.5 text-primary" /> Mode Auditor & Analytics Lengkap <ArrowRight className="size-3" />
+          </Link>
+        </div>
+
+        {/* Header Desa */}
         <DesaHeader
           nama={desa.nama}
           kabupaten={desa.kabupaten}
@@ -108,68 +164,40 @@ export default function ProfilDesaPage() {
           penduduk={desa.penduduk}
         />
 
-        {/* Ringkasan cepat */}
-        <section aria-label="Ringkasan anggaran" className="mt-8">
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-            <DesaSummaryCard
-              icon={Wallet}
-              label={`Total Anggaran ${desa.tahun}`}
-              value={desa.totalAnggaran}
-              note="APBDes tahun berjalan"
-            />
-            <DesaSummaryCard
-              icon={TrendingUp}
-              label="Realisasi Anggaran"
-              value={`${desa.realisasi}%`}
-              progress={desa.realisasi}
-              note={`Terpakai dari total ${desa.totalAnggaran}`}
-            />
-            <DesaSummaryCard
-              icon={Wallet}
-              label="Status Penilaian"
-              value={desa.status.text === 'Anggaran Wajar' ? 'Wajar' : 'Perlu Ditinjau'}
-              status={desa.status}
-              note="Berdasarkan audit terbuka data desa"
-            />
-          </div>
+        {/* SECTION 1: SIMPLIFIED CITIZEN DASHBOARD (Ringkasan Warga Desa) */}
+        <section aria-label="Ringkasan Uang Desa untuk Warga">
+          <RingkasanWarga
+            totalAnggaran={desa.totalAnggaran}
+            tahun={desa.tahun}
+            dataAlokasi={dataAlokasiWarga}
+          />
         </section>
 
-        {/* Navigasi fitur inti */}
-        <section aria-label="Fitur utama desa" className="mt-10">
-          <h2 className="font-heading text-xl font-bold tracking-tight text-foreground">
-            Jelajahi data desa
-          </h2>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Pilih salah satu untuk melihat detail lebih lanjut.
-          </p>
-          <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-3">
-            {features.map((f) => (
-              <FeatureNavCard key={f.title} {...f} />
-            ))}
-          </div>
+        {/* SECTION 2: KLARIFIKASI RESMI PERANGKAT DESA */}
+        <section aria-label="Klarifikasi Resmi Perangkat Desa">
+          <KlarifikasiDesa namaDesa={desa.nama} dataKlarifikasi={dataKlarifikasi} />
         </section>
 
-        {/* Laporan Warga Publik */}
-        <section aria-label="Laporan warga" className="mt-10">
+        {/* SECTION 3: LAPORAN WARGA & CROWDSOURCED AUDIT */}
+        <section aria-label="Laporan warga" className="space-y-4">
           <div className="flex items-center justify-between">
             <div>
               <h2 className="font-heading text-xl font-bold tracking-tight text-foreground">
-                Laporan Warga
+                Laporan Warga Desa
               </h2>
-              <p className="mt-1 text-sm text-muted-foreground">
-                Laporan ketidaksesuaian yang telah diverifikasi tim TransparanDesa.
+              <p className="mt-0.5 text-sm text-muted-foreground">
+                Laporan ketidaksesuaian yang telah diverifikasi oleh tim TransparanDesa.
               </p>
             </div>
             <Link
-              href="/desa/ponggok/lapor"
-              className="text-xs font-semibold text-primary hover:underline underline-offset-4"
+              href="/desa/sukamaju/lapor"
+              className="inline-flex items-center gap-1.5 rounded-xl bg-primary px-4 py-2 text-xs font-bold text-white hover:bg-primary/90 transition-colors shadow-xs"
             >
-              + Buat Laporan
+              + Buat Laporan Warga
             </Link>
           </div>
-          <div className="mt-4">
-            <LaporanPublikList data={laporanPublik} namaDesa={desa.nama} />
-          </div>
+
+          <LaporanPublikList data={laporanPublik} namaDesa={desa.nama} />
         </section>
       </main>
     </div>

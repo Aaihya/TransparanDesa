@@ -65,7 +65,7 @@ export function MetodologiModal() {
                   <div className="flex flex-col gap-2">
                     {[
                       { step: 'pdfplumber', desc: 'Mengekstrak teks mentah dari PDF termasuk tabel dan kolom angka' },
-                      { step: 'Claude Haiku (LLM)', desc: 'Memahami konteks, memetakan kategori anggaran sesuai standar Siskeudes/Kemenkeu' },
+                      { step: 'Gemini 3.6 Flash (LLM)', desc: 'Memahami konteks, memetakan kategori anggaran sesuai standar Siskeudes/Kemenkeu' },
                       { step: 'JSON Terstruktur', desc: 'Output data ternormalisasi: kategori, nominal alokasi, realisasi per bidang' },
                       { step: 'Validasi & Simpan', desc: 'Data divalidasi konsistensinya lalu disimpan ke database Supabase' },
                     ].map((s) => (
