@@ -89,7 +89,7 @@ export function LaporanConfirmation({
           Tiket Kepedulian Warga
         </h1>
         <p className="mt-1 text-xs text-muted-foreground">
-          Sistem transparansi dua sisi informasi (*Constructive Public Dialogue*)
+          Sistem transparansi dua sisi informasi
         </p>
 
         <div className="mt-5 inline-flex items-center gap-3 rounded-xl border border-border bg-muted/40 px-4 py-2 text-xs">
